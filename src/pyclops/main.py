@@ -1,3 +1,5 @@
+"""Module for the main functionality of the pyclops application."""
+
 import time
 
 import cv2
@@ -12,20 +14,30 @@ logging.basicConfig(level=logging.INFO)
 
 
 def read_webcam() -> bytes:
+    """Read a single frame from the webcam and return it as JPEG image data.
+
+    Raises:
+        RuntimeError: If the frame cannot be read from the webcam (e.g., camera not
+            available, permission denied, or hardware failure).
+
+    Returns:
+        The captured frame encoded as JPEG image data.
+    """
     cap = cv2.VideoCapture(0)
     # Warm up the camera by discarding initial frames
     for _ in range(5):
         cap.read()
-
+    # Read a single frame from the webcam
     ret, frame = cap.read()
     cap.release()
     if not ret:
-        raise Exception("Could not read from webcam")
+        raise RuntimeError("Could not read from webcam")
     _, buffer = cv2.imencode(".jpg", frame)
     return buffer.tobytes()
 
 
 def watch() -> None:
+    """Watch the webcam and upload images to Dropbox."""
     dbx = Dropbox(
         app_key=settings.app_key,
         app_secret=settings.app_secret,

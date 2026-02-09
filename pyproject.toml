@@ -57,6 +57,10 @@ line-ending = "auto"
 docstring-code-format = true
 docstring-code-line-length = "dynamic"
 
+[tool.ruff.lint]
+# Enable the "D" (pydocstyle) rules
+select = ["D"]
+
 [tool.ruff.lint.pydocstyle]
 convention = "google"
 
