@@ -1,0 +1,36 @@
+repos:
+  - repo: local
+    hooks:
+      - id: format
+        name: ruff formatting
+        description: Run ruff to format code.
+        entry: uv run ruff
+        args: ["format"]
+        language: system
+        types: [python]
+
+      - id: lint
+        name: ruff linting
+        description: Run ruff to check code for linting issues.
+        entry: uv run ruff
+        args: ["check", "--fix"]
+        language: system
+        types: [python]
+
+      - id: typecheck
+        name: typecheck
+        description: Run ty to check types.
+        entry: uv run ty
+        args: ["check"]
+        language: system
+        types: [python]
+
+      - id: jupyter-nb-clear-output
+        name: jupyter notebook clear output
+        description: Clear output from Jupyter notebooks.
+        entry: jupyter nbconvert 
+        args: ["--clear-output"]
+        stages: [pre-commit]
+        files: \.ipynb$
+        language: system
+        types: [python]

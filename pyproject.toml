@@ -1,0 +1,75 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "petcam"
+description = "petcam"
+authors = [{name = "Chris Wadsworth", email = "chrisjwadsworth@gmail.com"}]
+readme = "README.md"
+version = "0.1.0"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+    "pre-commit",
+    "pytest",
+    "pytest-mock",
+    "pytest-cov",
+    "ruff",
+    "nox[uv]",
+    "ty",
+    "nbconvert",
+]
+docs = [
+    "mkdocs",
+    "mkdocs-material",
+    "mkdocstrings-python",
+    "mike"
+]
+
+[tool.uv]
+concurrent-downloads = 5
+
+[project.urls]
+Documentation = "https://pages.github.com/Wadd0/petcam"
+Issues = "https://github.com/Wadd0/petcam/issues"
+Repository = "https://github.com/Wadd0/petcam"
+
+[tool.ruff]
+line-length = 88
+indent-width = 4
+fix = true
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "auto"
+docstring-code-format = true
+docstring-code-line-length = "dynamic"
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["D103"]
+"__init__.py" = ["D104"]
+
+[tool.pydocstyle]
+convention = "google"
+
+[tool.ty.src]
+include = ["src", "tests"]
+
+[tool.coverage.paths]
+source = ["src/"]
+
+[tools.setuptools]
+include-package-data = true
+
+[tools.setuptools.packages.find]
+where = ["src"]
+
+[tools.pytest.ini_options]
+testpaths = ["tests"]
