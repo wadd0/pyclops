@@ -1,8 +1,13 @@
 """Nox sessions for automating tasks."""
 
+import os
 import sys
 
 import nox
+
+# Set UV_VENV_CLEAR to automatically clear existing virtual environments
+# https://github.com/astral-sh/uv/issues/17899
+os.environ["UV_VENV_CLEAR"] = "1"
 
 PYTHON_VERSIONS = ["3.10"]
 
