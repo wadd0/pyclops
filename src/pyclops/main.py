@@ -23,7 +23,7 @@ def read_webcam() -> bytes:
     Returns:
         The captured frame encoded as JPEG image data.
     """
-    cap = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture(settings.camera_index)
     # Warm up the camera by discarding initial frames
     for _ in range(5):
         cap.read()

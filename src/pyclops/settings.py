@@ -13,6 +13,7 @@ class Settings(BaseSettings):
     image: str
     app_root: str
     interval: int = 60
+    camera_index: int = 0
 
 
 settings = Settings()  # ty:ignore[missing-argument]
