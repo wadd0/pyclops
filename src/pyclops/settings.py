@@ -10,8 +10,7 @@ class Settings(BaseSettings):
     app_key: str
     app_secret: str
     refresh_token: str
-    image: str
-    app_root: str
+    image_name: str
     interval: int = 60
     camera_index: int = 0
 

@@ -49,7 +49,7 @@ def watch() -> None:
         logger.info("Uploading image to Dropbox...")
         dbx.files_upload(
             f=image,
-            path=f"{settings.app_root}/{settings.image}",
+            path=settings.image_name,
             mode=dropbox.files.WriteMode("overwrite"),  # ty:ignore[possibly-missing-attribute]
             autorename=False,
         )
