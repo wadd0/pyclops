@@ -1,0 +1,14 @@
+[Unit]
+Description=Run PyClops
+After=network.target
+
+[Service]
+User=monty
+WorkingDirectory=/home/monty
+ExecStart=/home/monty/.local/bin/pyclops    
+EnvironmentFile=/home/monty/.env
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
