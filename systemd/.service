@@ -3,10 +3,10 @@ Description=Run PyClops
 After=network.target
 
 [Service]
-User=monty
-WorkingDirectory=/home/monty
-ExecStart=/home/monty/.local/bin/pyclops    
-EnvironmentFile=/home/monty/.env
+User=rats
+WorkingDirectory=/home/rats
+ExecStart=/home/rats/.local/bin/pyclops    
+EnvironmentFile=/home/rats/.env
 Restart=always
 RestartSec=5
 
